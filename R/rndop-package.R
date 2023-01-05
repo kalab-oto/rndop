@@ -12,5 +12,6 @@
 #' (<https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
 #' 
 #' @author Oto Kaláb
-
+#' @name rndop-package
+#' @aliases rndop
 NULL
