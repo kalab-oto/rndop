@@ -1,0 +1,24 @@
+Package: rndop
+Title: Interface for The Species Occurrence Database of NCA CR (Czechia)
+Version: 0.0.1
+Authors@R: 
+    person("Oto", "Kaláb", , "kalab.oto@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-3485-9377"))
+Description: A programmatic interface to the The Species Occurrence Database of
+    NCA CR (NDOP AOPK). The NDOP is Czech national species occurrence database 
+    of NCA CR (Nature Conservation Agency of the Czech Republic; 
+    <https://portal.nature.cz/nd/>). Database includes occurrence records both 
+    from professionals (monitorings, inventarisations) and citizen scientists. 
+    Use of the database is free and requires free registration 
+    (<https://idm.nature.cz/idm/#/registration>). Data itselfs are published 
+    under CC BY-SA 4.0 licence and should be referenced according to AOPK 
+    citation rules 
+    (<https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Imports:
+    httr,
+    getPass,
+    sf
