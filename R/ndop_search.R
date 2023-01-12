@@ -4,7 +4,7 @@ ndop_search <- function(taxon){
     if (!exists("isop_loginhash")) {
        isop_login()
     }
-    search_payload = list(
+    search_payload <- list(
         rfTaxon = taxon,
         but_action = 'Filtrovat',
         but_co = 'rf',
