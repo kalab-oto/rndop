@@ -4,7 +4,7 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
             but_co = 'rf',
             pagesizeX =  1000)
     
-    if (rfTaxon) {
+    if (hasArg(rfTaxon)) {
         list_lines <- grep(paste(rfTaxon, collapse = "|"),
                                  ndop_list("species"))
         search_payload$rfTaxon <- ndop_list("species")[list_lines]
@@ -17,7 +17,7 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
         }       
     }
 
-    if (rfCeledi) {
+    if (hasArg(rfCeledi)) {
         list_lines <- grep(paste(rfCeledi, collapse = "|"),
                                  ndop_list("family")[,2])
         search_payload$rfCeledi <- ndop_list("family")[list_lines,1]
@@ -30,7 +30,7 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
         }
     }
 
-    if (rfKategorie) {
+    if (hasArg(rfKategorie)) {
         list_lines <- grep(paste(rfKategorie,collapse = "|"),
                                  ndop_list("group")[,2])
 
