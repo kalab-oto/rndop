@@ -45,14 +45,14 @@ ndop_download <- function(species, family, group, locations = 0) {
     search_payload <- set_search_payload(rfTaxon = species,
                                          rfCeledi = family,
                                          rfKategorie = group)
-    filter_session_info <- ndop_search(search_payload)
+    filter_session <- ndop_search(search_payload)
 
-    ndtoken <- filter_session_info$ndtoken
-    isop_loginhash <- filter_session_info$isop_loginhash
-    num_rec <- filter_session_info$records
+    ndtoken <- filter_session$ndtoken
+    isop_loginhash <- filter_session$isop_loginhash
+    num_rec <- filter_session$records
 
     if (locations == 1) {
-        sf_list <- get_locations(filter_session_info)
+        sf_list <- get_locations(filter_session)
         return(sf_list)
     }
 
@@ -138,7 +138,7 @@ ndop_download <- function(species, family, group, locations = 0) {
     }
     table_df <- do.call(rbind, table_df_list)
     if (locations == 2) {
-        sf_list <- get_locations(filter_session_info)
+        sf_list <- get_locations(filter_session)
         sf_df <- list(sf_list,table_df)
         return(sf_df)
     }
