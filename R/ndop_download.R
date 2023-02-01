@@ -3,7 +3,7 @@
 #' Download data from NDOP. Default data source is table data containing all
 #'  available informations about records. Optionally is also possible to 
 #' download raw localizations.
-#' @param taxon search by species or genus name
+#' @param species search by species or genus name
 #' @param family search by family name
 #' @param group search by predefined higher taxon categories
 #' @param locations enables download raw localizations provided by NDOP in 
@@ -40,9 +40,9 @@
 #' locs <- ndop_download("mantis religiosa", locations = 1)
 #' plot(locs[[1]]$geometry)
 
-ndop_download <- function(taxon, family, group, locations = 0) {
+ndop_download <- function(species, family, group, locations = 0) {
 
-    search_payload <- set_search_payload(rfTaxon = taxon,
+    search_payload <- set_search_payload(rfTaxon = species,
                                          rfCeledi = family,
                                          rfKategorie = group)
     filter_session_info <- ndop_search(search_payload)
