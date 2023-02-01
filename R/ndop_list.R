@@ -8,7 +8,7 @@
 #' Some of returned dataframes contains also `payload_val`, which is value used
 #' in the raw search payload for requests during querying the server. I plan add
 #'  user search paylod functionality. For entering values in 
-#' \code{\link{ndop_downlad}} use values from `name_lat`.
+#' \code{\link{ndop_download}} use values from `name_lat`.
 #' 
 #' Some group entries have multiple groups in one row (e.g. `Collembola, 
 #' Protura, Diplura` with `payload_val` `119`), you can entry only one of them,
@@ -30,3 +30,4 @@ ndop_list <- function(list_type){
        return(group_list)
     }
 }
+

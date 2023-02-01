@@ -19,7 +19,7 @@ Check all available values for NDOP queries of species, families, and groups.
 Some of returned dataframes contains also \code{payload_val}, which is value used
 in the raw search payload for requests during querying the server. I plan add
 user search paylod functionality. For entering values in
-\code{\link{ndop_downlad}} use values from \code{name_lat}.
+\code{\link{ndop_download}} use values from \code{name_lat}.
 
 Some group entries have multiple groups in one row (e.g. \verb{Collembola,  Protura, Diplura} with \code{payload_val} \code{119}), you can entry only one of them,
 but is not possible to split the request, becaues the request use
