@@ -2,3 +2,4 @@
 
 export(isop_login)
 export(ndop_download)
+export(ndop_list)
