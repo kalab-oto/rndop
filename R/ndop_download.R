@@ -4,6 +4,8 @@
 #'  available informations about records. Optionally is also possible to 
 #' download raw localizations.
 #' @param taxon search by species or genus name
+#' @param family search by family name
+#' @param group search by predefined higher taxon categories
 #' @param locations enables download raw localizations provided by NDOP in 
 #' ESRI shapefiles. The localizations are provided as points, lines and polygons
 #' layers, and contains only geometries and lcalization id. Options: 1 - 
@@ -38,9 +40,12 @@
 #' locs <- ndop_download("mantis religiosa", locations = 1)
 #' plot(locs[[1]]$geometry)
 
-ndop_download <- function(taxon, locations = 0) {
+ndop_download <- function(taxon, family, group, locations = 0) {
 
-    filter_session_info <- ndop_search(taxon)
+    search_payload <- set_search_payload(rfTaxon = taxon,
+                                         rfCeledi = family,
+                                         rfKategorie = group)
+    filter_session_info <- ndop_search(search_payload)
 
     ndtoken <- filter_session_info$ndtoken
     isop_loginhash <- filter_session_info$isop_loginhash

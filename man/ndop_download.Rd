@@ -4,10 +4,14 @@
 \alias{ndop_download}
 \title{Download occurrence data from NDOP}
 \usage{
-ndop_download(taxon, locations = 0)
+ndop_download(taxon, family, group, locations = 0)
 }
 \arguments{
 \item{taxon}{search by species or genus name}
+
+\item{family}{search by family name}
+
+\item{group}{search by predefined higher taxon categories}
 
 \item{locations}{enables download raw localizations provided by NDOP in
 ESRI shapefiles. The localizations are provided as points, lines and polygons
