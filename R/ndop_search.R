@@ -5,21 +5,24 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
             pagesizeX =  1000)
     
     if (hasArg(rfTaxon)) {
-        list_lines <- grep(paste(rfTaxon, collapse = "|"),
-                                 ndop_list("species"))
-        search_payload$rfTaxon <- ndop_list("species")[list_lines]
+        list_vals  <- grep(paste(rfTaxon, collapse = "|"),
+                                 ndop_list("species"),
+                          ignore.case=TRUE,
+                          value=TRUE)
+        search_payload$rfTaxon <- list_vals
         rfTaxon_num <- length(search_payload$rfTaxon)
         if (rfTaxon_num > 1) {
-            search_payload$rfTaxon <- paste(search_payload$rfTaxon,
+            search_payload$rfTaxon <- paste(list_vals,
                                             collapse = " || ")
             cat(paste("Processing",rfTaxon_num,"species:\n"))
-            cat(paste0(ndop_list("species")[list_lines],","))
+            cat(paste0(list_vals,","))
         }       
     }
 
     if (hasArg(rfCeledi)) {
         list_lines <- grep(paste(rfCeledi, collapse = "|"),
-                                 ndop_list("family")[,2])
+                                 ndop_list("family")[,2],
+                          ignore.case=TRUE)
         search_payload$rfCeledi <- ndop_list("family")[list_lines,1]
         rfCeledi_num <- length(search_payload$rfCeledi)
         if (rfCeledi_num > 1) {
@@ -32,8 +35,8 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
 
     if (hasArg(rfKategorie)) {
         list_lines <- grep(paste(rfKategorie,collapse = "|"),
-                                 ndop_list("group")[,2])
-
+                                 ndop_list("group")[,2],
+                          ignore.case=TRUE)
         search_payload$rfKategorie <- ndop_list("group")[list_lines,1]
         search_payload$rfMesiceOd <- 1
         search_payload$rfMesiceDo <- 12
