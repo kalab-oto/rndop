@@ -52,9 +52,9 @@ isop_login <- function(username = NULL,
     if (missing(password)) {
        password <- getPass::getPass(msg = "Password: ")
         if (store) {
-            ndop_user <- paste("NDOP_USER", "=", username)
-            write(ndop_user, file = " ~/.Renviron", append = TRUE)
-            ndop_pwd <- paste("NDOP_PWD","=", password)
+            ndop_user <- paste0("NDOP_USER='", username, "'")
+            write(ndop_user, file = "~/.Renviron", append = TRUE)
+            ndop_pwd <- paste0("NDOP_PWD='", password,"'")
             write(ndop_pwd, file = "~/.Renviron", append = TRUE)
         }
     }
