@@ -67,6 +67,8 @@ ndop_search <- function(search_payload){
                            config = httr::set_cookies(
                                             isop_loginhash = isop_loginhash))
     }
+    
+    Sys.sleep(3)
 
     num_rec_ind <- gregexpr("záznam ze \\d+", 
                             httr::content(filter_page, 
