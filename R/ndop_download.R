@@ -45,6 +45,8 @@ ndop_download <- function(species, family, group, locations = 0) {
     search_payload <- set_search_payload(rfTaxon = species,
                                          rfCeledi = family,
                                          rfKategorie = group)
+    pagesize <- search_payload$pagesizeX
+
     filter_session <- ndop_search(search_payload)
 
     ndtoken <- filter_session$ndtoken
@@ -106,27 +108,27 @@ ndop_download <- function(species, family, group, locations = 0) {
         meziexport_typ_exportu = 'csv',
         ndtokenexport = ndtoken
     )
-    tables_num <- ceiling(num_rec / 1000)
+    tables_num <- ceiling(num_rec / pagesize)
     table_df_list <- vector("list", length = tables_num)
-
     for (i in 1:tables_num) {
-        frompage <- seq(0, num_rec, 1000)[i]
+        frompage <- seq(0, num_rec, pagesize)[i]
 
-        if (frompage + 1000 < num_rec) {
-           to <- frompage + 1000
+        if (frompage + pagesize < num_rec) {
+           to <- frompage + pagesize
         } else {
            to <- num_rec
         }
         cat(paste0(frompage + 1, " - ", to, "\n"))
-        if (num_rec == frompage + 1000) {
+        if (num_rec == frompage + pagesize) {
            cat(num_rec)
         }
         table_url <- paste0("https://portal.nature.cz/nd/find.php?",
                             "akce=seznam&opener=&vztazne_id=0&",
                             "order=ID_ND_NALEZ&orderhow=DESC&frompage=",
                             frompage,
-                            "&pagesize=1000&filtering=&s",
-                            "earching=&export=1&ndtoken=",
+                            "&pagesize=",
+                            pagesize,
+                            "&filtering=&searching=&export=1&ndtoken=",
                             ndtoken)
         table_post <- httr::POST(url = table_url,
                            body = table_payload,
