@@ -88,5 +88,6 @@ ndop_search <- function(search_payload){
                                 isop_loginhash = isop_loginhash,
                                 ndtoken = ndtoken,
                                 PHPSESSID = filter_page$cookies[1,"value"])
+    cat(paste0(num_rec," records found`n"))
     return(filter_session_info)
 }

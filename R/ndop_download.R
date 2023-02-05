@@ -108,11 +108,7 @@ ndop_download <- function(species, family, group, locations = 0) {
     )
     tables_num <- ceiling(num_rec / 1000)
     table_df_list <- vector("list", length = tables_num)
-    cat(paste0("Downloading ",
-               num_rec, 
-               " records in ", 
-               tables_num, 
-               " tables\n"))
+
     for (i in 1:tables_num) {
         frompage <- seq(0, num_rec, 1000)[i]
 
