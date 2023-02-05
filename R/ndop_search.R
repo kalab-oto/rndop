@@ -2,7 +2,7 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
     search_payload <- list(
             but_action =  'Filtrovat',
             but_co = 'rf',
-            pagesizeX =  1000)
+            pagesizeX =  10000)
     
     if (hasArg(rfTaxon)) {
         list_vals  <- grep(paste(rfTaxon, collapse = "|"),
