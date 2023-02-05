@@ -110,6 +110,7 @@ ndop_download <- function(species, family, group, locations = 0) {
     )
     tables_num <- ceiling(num_rec / pagesize)
     table_df_list <- vector("list", length = tables_num)
+    cat("Downloading:\n")
     for (i in 1:tables_num) {
         frompage <- seq(0, num_rec, pagesize)[i]
 
