@@ -142,6 +142,9 @@ ndop_download <- function(species, family, group, locations = 0) {
                                          sep = ";",
                                          dec = ",",
                                          stringsAsFactors = FALSE)
+        hidden_coords <- grep("<i>Skrytá lokalizace</i>",
+                                 table_df_list[[i]]$Y)
+        table_df_list[[i]][hidden_coords,c("X","Y")] <-  NA
     }
     table_df <- do.call(rbind, table_df_list)
     if (locations == 2) {
