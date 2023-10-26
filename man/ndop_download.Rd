@@ -4,10 +4,10 @@
 \alias{ndop_download}
 \title{Download occurrence data from NDOP}
 \usage{
-ndop_download(taxon, family, group, locations = 0)
+ndop_download(species, family, group, locations = 0, search_payload)
 }
 \arguments{
-\item{taxon}{search by species or genus name}
+\item{species}{search by species or genus name}
 
 \item{family}{search by family name}
 
@@ -18,6 +18,8 @@ ESRI shapefiles. The localizations are provided as points, lines and polygons
 layers, and contains only geometries and lcalization id. Options: 1 -
 download only localization (without table data); 2 - download localization
 and table data; NULL - do not download localization (default)}
+
+\item{search_payload}{allows to enter a list of keys and values of POST request directly. Use \code{\link{ndop_download}} function for genarating tepmlate}
 }
 \value{
 \code{data.frame} with table data or/and list of \code{sf} objects with

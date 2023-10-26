@@ -11,6 +11,7 @@
 #' layers, and contains only geometries and lcalization id. Options: 1 - 
 #' download only localization (without table data); 2 - download localization 
 #' and table data; NULL - do not download localization (default)
+#' @param search_payload allows to enter a list of keys and values of POST request directly. Use \code{\link{ndop_download}} function for genarating tepmlate
 #' @section Coordinates:
 #' Table data includes XY coordinates in S-JTSK (EPSG:5514). Source of some 
 #' records are polygons or lines, in that case XY coordinates in table are 
@@ -40,11 +41,14 @@
 #' locs <- ndop_download("mantis religiosa", locations = 1)
 #' plot(locs[[1]]$geometry)
 
-ndop_download <- function(species, family, group, locations = 0) {
+ndop_download <- function(species, family, group, locations = 0, search_payload) {
+    
+    if (!hasArg(search_payload)) {
+        search_payload <- set_search_payload(rfTaxon = species,
+                                             rfCeledi = family,
+                                             rfKategorie = group)
+    }
 
-    search_payload <- set_search_payload(rfTaxon = species,
-                                         rfCeledi = family,
-                                         rfKategorie = group)
     pagesize <- search_payload$pagesizeX
 
     filter_session <- ndop_search(search_payload)

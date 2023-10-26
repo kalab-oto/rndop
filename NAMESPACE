@@ -3,3 +3,4 @@
 export(isop_login)
 export(ndop_download)
 export(ndop_list)
+export(set_search_payload)
