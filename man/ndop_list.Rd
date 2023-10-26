@@ -26,6 +26,6 @@ the \code{payload_val}.
 }
 
 \examples{
-# Exaple with table data
+# Example with table data
 ndop_list("group")
 }

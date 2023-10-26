@@ -39,7 +39,7 @@ raw geometries.
 }
 
 \examples{
-# Exaple with table data
+# Example with table data
 mr <- ndop_download("mantis religiosa")
 head(mr)
 

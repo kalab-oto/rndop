@@ -21,7 +21,7 @@
 #' localizations (depend on `locations` parameter)
 #' @export ndop_download
 #' @examples
-#' # Exaple with table data
+#' # Example with table data
 #' mr <- ndop_download("mantis religiosa")
 #' head(mr)
 #'

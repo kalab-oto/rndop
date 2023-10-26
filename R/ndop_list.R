@@ -15,7 +15,7 @@
 #' the `payload_val`.
 #' @export ndop_list
 #' @examples
-#' # Exaple with table data
+#' # Example with table data
 #' ndop_list("group")
 
 ndop_list <- function(list_type){
