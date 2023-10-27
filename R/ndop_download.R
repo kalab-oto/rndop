@@ -117,18 +117,18 @@ ndop_download <- function(species, family, group, locations = 0, search_payload)
     cat("Downloading:\n")
     for (i in 1:tables_num) {
         frompage <- seq(0, num_rec, pagesize)[i]
-        frompage <- format(frompage, scientific = FALSE)
 
         if (frompage + pagesize < num_rec) {
            to <- frompage + pagesize
         } else {
            to <- num_rec
         }
-        to <- format(to, scientific = FALSE)
         cat(paste0(frompage + 1, " - ", to, "\n"))
         if (num_rec == frompage + pagesize) {
            cat(num_rec)
         }
+        frompage <- format(frompage, scientific = FALSE)
+        to <- format(to, scientific = FALSE)
         table_url <- paste0("https://portal.nature.cz/nd/find.php?",
                             "akce=seznam&opener=&vztazne_id=0&",
                             "order=ID_ND_NALEZ&orderhow=DESC&frompage=",
