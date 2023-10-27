@@ -1,8 +1,8 @@
 ndop_search <- function(search_payload){
     SEARCH_URL <- paste0("https://portal.nature.cz/nd/find.php",
                          "?akce=seznam&opener=&vztazne_id=0")
-    if (!exists("isop_loginhash")) {
-       isop_login()
+    if (!exists("isop_loginhash") || is.na(isop_loginhash)) {
+        isop_login()
     }
 
     for (i in 1:2){

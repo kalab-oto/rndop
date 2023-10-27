@@ -10,6 +10,8 @@
 #' details
 #' @param store Store the `username` and `password` in the `.Renviron`. Default
 #'  is TRUE.
+#' @param reset Resets the `username` and `password` values in the `.Renviron`. Default
+#'  is FALSE.
 #' @section Authentication:
 #' There are two option how to set login authentication:
 #' 1. Set login credentials in the `.Renviron` file. This can be done 
@@ -32,26 +34,37 @@
 #' usr <- "isop_username"
 #' pwd <- "isop_password"
 #' isop_login(usr, pwd)
+#' 
+#' # using new credentials
+#' isop_login(reset = T)
 
 isop_login <- function(username = NULL,
                        password = NULL,
-                       store = TRUE) {
+                       store = TRUE,
+                       reset = FALSE) {
     LOGIN_URL <- "https://login.nature.cz/login.php?appid=59"
+
     if (Sys.getenv("NDOP_USER") != "") {
-       username <- Sys.getenv("NDOP_USER")
+        username <- Sys.getenv("NDOP_USER")
     }
     if (Sys.getenv("NDOP_PWD") != "") {
-       password <- Sys.getenv("NDOP_PWD")
+        password <- Sys.getenv("NDOP_PWD")
+    }
+    if (is.na(isop_loginhash)) {
+        cat("Previous login failed. ")
+       reset = T
+       renv_cleanup()
     }
 
-    if (missing(username)) {
+    if (missing(username) || reset) {
         cat(paste0("You are not logged in. Enter username and password.",
                    " For more details see `?isop_login`\n"))
        username <- readline(prompt = "Username: ")
-    }
-    if (missing(password)) {
+
        password <- getPass::getPass(msg = "Password: ")
         if (store) {
+            renv_cleanup()
+
             ndop_user <- paste0("NDOP_USER='", username, "'")
             write(ndop_user, file = "~/.Renviron", append = TRUE)
             ndop_pwd <- paste0("NDOP_PWD='", password,"'")
@@ -65,8 +78,14 @@ isop_login <- function(username = NULL,
         )
 
     l <- httr::POST(LOGIN_URL, body = login_payload)
-    if (is.na(l$cookies$value[2])) {
-       cat(("Login failed"))
-    }
     assign('isop_loginhash',l$cookies$value[2], envir = .GlobalEnv)
+    if (is.na(isop_loginhash)) {
+       renv_cleanup()
+       stop(paste(username,": login failed"))
+    }
+}
+
+renv_cleanup <- function(){
+    renv_lines <- readLines("~/.Renviron")[!startsWith(readLines("~/.Renviron"),"NDOP_")]
+    write(renv_lines, file = "~/.Renviron")
 }

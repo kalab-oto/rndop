@@ -4,7 +4,7 @@
 \alias{isop_login}
 \title{Login to ISOP}
 \usage{
-isop_login(username = NULL, password = NULL, store = TRUE)
+isop_login(username = NULL, password = NULL, store = TRUE, reset = FALSE)
 }
 \arguments{
 \item{username}{Username for ISOP login. See \code{Authentication} section for
@@ -15,6 +15,9 @@ details}
 
 \item{store}{Store the \code{username} and \code{password} in the \code{.Renviron}. Default
 is TRUE.}
+
+\item{reset}{Resets the \code{username} and \code{password} values in the \code{.Renviron}. Default
+is FALSE.}
 }
 \value{
 defined global variable \code{isop_loginhash} with NDOP login hash cookie
@@ -48,4 +51,7 @@ isop_login()
 usr <- "isop_username"
 pwd <- "isop_password"
 isop_login(usr, pwd)
+
+# using new credentials
+isop_login(reset = T)
 }
