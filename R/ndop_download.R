@@ -123,6 +123,7 @@ ndop_download <- function(species, family, group, locations = 0, search_payload)
         } else {
            to <- num_rec
         }
+        to <- format(to, scientific = FALSE)
         cat(paste0(frompage + 1, " - ", to, "\n"))
         if (num_rec == frompage + pagesize) {
            cat(num_rec)
