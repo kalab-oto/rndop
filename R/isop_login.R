@@ -50,11 +50,6 @@ isop_login <- function(username = NULL,
     if (Sys.getenv("NDOP_PWD") != "") {
         password <- Sys.getenv("NDOP_PWD")
     }
-    if (is.na(isop_loginhash)) {
-        cat("Previous login failed. ")
-        reset = T
-        renv_cleanup()
-    }
 
     if (missing(username) || reset) {
         cat(paste0("You are not logged in. Enter username and password.",
