@@ -117,6 +117,7 @@ ndop_download <- function(species, family, group, locations = 0, search_payload)
     cat("Downloading:\n")
     for (i in 1:tables_num) {
         frompage <- seq(0, num_rec, pagesize)[i]
+        frompage <- format(frompage, scientific = FALSE)
 
         if (frompage + pagesize < num_rec) {
            to <- frompage + pagesize
