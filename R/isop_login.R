@@ -52,16 +52,16 @@ isop_login <- function(username = NULL,
     }
     if (is.na(isop_loginhash)) {
         cat("Previous login failed. ")
-       reset = T
-       renv_cleanup()
+        reset = T
+        renv_cleanup()
     }
 
     if (missing(username) || reset) {
         cat(paste0("You are not logged in. Enter username and password.",
                    " For more details see `?isop_login`\n"))
-       username <- readline(prompt = "Username: ")
+        username <- readline(prompt = "Username: ")
 
-       password <- getPass::getPass(msg = "Password: ")
+        password <- getPass::getPass(msg = "Password: ")
         if (store) {
             renv_cleanup()
 
@@ -80,8 +80,8 @@ isop_login <- function(username = NULL,
     l <- httr::POST(LOGIN_URL, body = login_payload)
     assign('isop_loginhash',l$cookies$value[2], envir = .GlobalEnv)
     if (is.na(isop_loginhash)) {
-       renv_cleanup()
-       stop(paste(username,": login failed"))
+        renv_cleanup()
+        stop(paste(username,": login failed"))
     }
 }
 
