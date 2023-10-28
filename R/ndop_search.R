@@ -14,18 +14,19 @@ ndop_search <- function(search_payload){
     
     Sys.sleep(3)
 
+    filter_page_cont <- httr::content(filter_page)
+    
     num_rec_ind <- gregexpr("záznam ze \\d+", 
-                            httr::content(filter_page, 
-                            "text"))
+                            filter_page_cont)
     num_rec <- as.numeric(
         substring(
-            httr::content(filter_page, "text"),
+            filter_page_cont,
             num_rec_ind[[1]][1] + 10,
             num_rec_ind[[1]][1] + attr(num_rec_ind[[1]], "match.length")[1] - 1)
         )
-    ndtoken_ind <- gregexpr("ndtoken=\\w", httr::content(filter_page, "text"))
+    ndtoken_ind <- gregexpr("ndtoken=\\w", filter_page_cont)
     ndtoken <- substring(
-           httr::content(filter_page, "text"),
+           filter_page_cont,
            ndtoken_ind[[1]][1] + 8,
            ndtoken_ind[[1]][1] + attr(ndtoken_ind[[1]], "match.length")[1] + 30)
     filter_session_info <- list(records = num_rec,
