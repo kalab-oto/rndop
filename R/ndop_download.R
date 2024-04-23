@@ -127,7 +127,7 @@ ndop_download <- function(species, family, group, locations = 0, search_payload)
         if (num_rec == frompage + pagesize) {
            cat(num_rec)
         }
-        table_url <- paste0("https://portal.nature.cz/nd/find.php?",
+        table_url <- paste0("https://portal23.nature.cz/nd/find.php?",
                             "akce=seznam&opener=&vztazne_id=0&",
                             "order=ID_ND_NALEZ&orderhow=DESC&frompage=",
                             format(frompage, scientific = FALSE),
