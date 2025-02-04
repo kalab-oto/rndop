@@ -53,8 +53,16 @@ r <- httr::GET(paste0("https://portal.nature.cz/inc/components/modals/",
 species_list <- jsonlite::fromJSON(httr::content(r,"text"))$items
 species_list <- unique(species_list[,1])
 
+# Area
+
+r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/modals/",
+                      "modals.php?opener=multiple&promka=&id_kategorie="))
+
+area_list <- jsonlite::fromJSON(httr::content(r,"text"))$items
+area_list <- as.data.frame(area_list)
+names(area_list) <- c("payload_val","type","name")
 # Save data
 
-usethis::use_data(species_list,family_list,group_list,
+usethis::use_data(species_list,family_list,group_list,area_list
                   internal = TRUE,
                   overwrite = T)
