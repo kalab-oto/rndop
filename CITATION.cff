@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Kaláb
+  given-names: Oto
+  affiliation: Department of Physical Geography and Geoecology, Faculty of Science, University of Ostrava,
+  orcid: 0000-0003-3485-9377
+title: "rndop: Interface for The Species Occurrence Database of NCA CR (Czechia)"
+version: 0.2.1
+date-released: 2024-04-23
+url: "https://github.com/kalab-oto/rndop"
