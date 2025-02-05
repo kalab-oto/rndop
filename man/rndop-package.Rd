@@ -14,7 +14,7 @@ Use of the database is free and requires free registration
 (\url{https://idm.nature.cz/idm/#/egistration}). Data itselfs are published
 under CC BY-SA 4.0 licence and should be referenced according to AOPK
 citation rules
-(\url{https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910}).
+(\url{https://portal23.nature.cz/publik_syst/ctihtmlpage.php?what=4910}).
 }
 \author{
 Oto Kaláb

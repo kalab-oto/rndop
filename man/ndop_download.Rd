@@ -4,7 +4,14 @@
 \alias{ndop_download}
 \title{Download occurrence data from NDOP}
 \usage{
-ndop_download(species, family, group, locations = 0, search_payload)
+ndop_download(
+  species,
+  family,
+  group,
+  locations = 0,
+  search_payload,
+  num_rec_only
+)
 }
 \arguments{
 \item{species}{search by species or genus name}
@@ -20,6 +27,8 @@ download only localization (without table data); 2 - download localization
 and table data; NULL - do not download localization (default)}
 
 \item{search_payload}{allows to enter a list of keys and values of POST request directly. Use \code{\link{ndop_download}} function for genarating tepmlate}
+
+\item{num_rec_only}{if TRUE, returns only number of records found}
 }
 \value{
 \code{data.frame} with table data or/and list of \code{sf} objects with
