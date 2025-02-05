@@ -1,5 +1,5 @@
 get_locations <- function(filter_session_info) {
-    LOCATIONS_URL <- "https://portal.nature.cz/nd/export_lokalizaci.php"
+    LOCATIONS_URL <- "https://portal23.nature.cz/nd/export_lokalizaci.php"
 
     filter_PHPSESSID <- filter_session_info$PHPSESSID
 

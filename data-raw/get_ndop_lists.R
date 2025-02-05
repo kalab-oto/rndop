@@ -1,6 +1,6 @@
 # Group
 
-r <- httr::GET("https://portal.nature.cz/redlist/v_nd_taxon_category.php?")
+r <- httr::GET("https://portal23.nature.cz/redlist/v_nd_taxon_category.php?")
 
 html_parse <-  gsub(paste0('^.*<select name="skupina" style=',
                            '"width: 360px; padding: 2px;">\\s*|\\s*<td>.*$'),
@@ -35,7 +35,7 @@ group_list <- group_list[c(1,3)]
 family_cat <- list()
 
 for (i in seq(nrow(group_list))) {
-    r <- httr::GET(paste0("https://portal.nature.cz/inc/components/",
+    r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/",
                            "modals/modals.php?opener=rfCeledi&promka=&",
                            "id_kategorie=",group_list$payload_val[i]))
     family_cat[[i]] <- jsonlite::fromJSON(httr::content(r,"text"))$items
@@ -47,7 +47,7 @@ family_list <- family_list[1:2]
 
 # Species
 
-r <- httr::GET(paste0("https://portal.nature.cz/inc/components/modals/",
+r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/modals/",
                       "modals.php?opener=rfTaxon&promka=&id_kategorie="))
 
 species_list <- jsonlite::fromJSON(httr::content(r,"text"))$items
