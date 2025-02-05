@@ -5,11 +5,9 @@
 #' @export set_search_payload
 #' @examples
 #' # Prepare search payload for 6175 KFME field
-#' pld <- set_search_payload()
-#' pld$rfKvadrat <- 6175
+#' pld <- set_search_payload(rfKvadrat = 6175, num_rec_only = T)
 
-set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
-    search_payload <- list(
+set_search_payload <- function(
             but_action =  'Filtrovat',
             but_co = 'rf',
             pagesizeX =  10000,
@@ -62,13 +60,15 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
             rfGL = '',
             rfWL = '',
             rf1143 = '',
-            'text+inputObec' = '',
+            `text+inputObec` = '',
             parametryZakresu = '',
             existujeZakres = '',
             karta_id = '',
             karta_vztazne_id = '',
             idAkce = '',
-            lpass = '')
+            lpass = ''){
+
+    search_payload <- c(as.list(environment()))
 
     if (hasArg(rfTaxon)) {
         list_vals  <- grep(paste(rfTaxon, collapse = "|"),

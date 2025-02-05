@@ -50,7 +50,12 @@ test_that("groups not found works", {
     expect_gt(ndop_download(group = c("Foo bar", "Polyneoptera"), num_rec_only = T), 1)
 })
 
-test_that("user payload works", {
-    expect_equal(is.na(ndop_download(group = "no group", num_rec_only = T)),T)
-    expect_gt(ndop_download(group = c("Foo bar", "Polyneoptera"), num_rec_only = T), 1)
+pld <- set_search_payload(rfKvadrat = 6175, rfTaxon = c("Mycetobia pallipes", "mantis religiosa"))
+pld_0 <- ndop_download(search_payload = pld)
+
+pld_num <- set_search_payload(rfKvadrat = 6175, rfTaxon = "mantis religiosa")
+pld_1 <- ndop_download(search_payload = pld_num, num_rec_only = T)
+
+test_that("query multiple species while one of them have 0 records", {
+    expect_equal(dim(pld_0),pld_1)
 })
