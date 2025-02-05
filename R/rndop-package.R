@@ -9,7 +9,7 @@
 #' (<https://idm.nature.cz/idm/#/egistration>). Data itselfs are published 
 #' under CC BY-SA 4.0 licence and should be referenced according to AOPK 
 #' citation rules 
-#' (<https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
+#' (<https://portal23.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
 #' 
 #' @author Oto Kaláb
 #' @name rndop-package
