@@ -1,5 +1,5 @@
 Package: rndop
-Title: Interface for The Species Occurrence Database of NCA CR (Czechia)
+Title: Access to the Data from The Species Occurrence Database of NCA CR (Czechia) in R
 Version: 0.2.0.9000
 Authors@R: 
     person("Oto", "Kaláb", , "kalab.oto@example.com", role = c("aut", "cre"),
@@ -10,11 +10,11 @@ Description: A programmatic interface to the The Species Occurrence Database of
     <https://portal.nature.cz/nd/>). Database includes occurrence records both 
     from professionals (monitorings, inventarisations) and citizen scientists. 
     Use of the database is free and requires free registration 
-    (<https://idm.nature.cz/idm/#/registration>). Data itselfs are published 
+    (<https://idm.nature.cz/idm/#/registration>). Data itself are published 
     under CC BY-SA 4.0 licence and should be referenced according to AOPK 
     citation rules 
     (<https://portal23.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
-License: `use_mit_license()`
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
