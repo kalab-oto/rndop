@@ -26,7 +26,7 @@ layers, and contains only geometries and lcalization id. Options: 1 -
 download only localization (without table data); 2 - download localization
 and table data; NULL - do not download localization (default)}
 
-\item{search_payload}{allows to enter a list of keys and values of POST request directly. Use \code{\link{ndop_download}} function for genarating tepmlate}
+\item{search_payload}{allows to enter a list of keys and values of POST request directly. Use \code{\link{set_search_payload}} function for genarating payload list}
 
 \item{num_rec_only}{if TRUE, returns only number of records found}
 }

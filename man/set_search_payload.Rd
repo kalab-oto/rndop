@@ -4,7 +4,67 @@
 \alias{set_search_payload}
 \title{Generate a template for user search payload for POST request}
 \usage{
-set_search_payload(rfTaxon, rfCeledi, rfKategorie)
+set_search_payload(
+  but_action = "Filtrovat",
+  but_co = "rf",
+  pagesizeX = 10000,
+  aopkOrtho = 0,
+  searchSelector = "ku",
+  rfMesiceOd = "",
+  rfMesiceDo = "",
+  rfDatumOd = "1.1.0001",
+  rfDatumDo = "1.1.9999",
+  rfAkce = "",
+  rfNalez = "",
+  rfIdLokalizace = "",
+  rfLokalizace = "",
+  rfAutor = "",
+  rfZdroj = "",
+  rfProjekt = "",
+  rfMetadata = "",
+  rfZapsal = "",
+  rfTaxon = "",
+  rfKategorie = "",
+  rfCeledi = "",
+  rfKatastr = "",
+  rfMZCHU = "",
+  rfVZCHU = "",
+  rfEVL = "",
+  rfPO = "",
+  rfZahrUzemi = "",
+  rfKraj = "",
+  rfPusobnost = "",
+  rfSpatialX = "",
+  rfSpatial = "",
+  rfKvadrat = "",
+  rfPresnost = "",
+  rfNalezyCr = "",
+  rfFotky = "",
+  rfKO = "",
+  rfSO = "",
+  rfO = "",
+  rfCcsCR = "",
+  rfCcsEN = "",
+  rfCcsVU = "",
+  rfCcsNT = "",
+  rfCcsEX = "",
+  rfCcsDD = "",
+  rfEVDII = "",
+  rfEVDIV = "",
+  rfEVDV = "",
+  rfEVDI = "",
+  rfBL = "",
+  rfGL = "",
+  rfWL = "",
+  rf1143 = "",
+  `text+inputObec` = "",
+  parametryZakresu = "",
+  existujeZakres = "",
+  karta_id = "",
+  karta_vztazne_id = "",
+  idAkce = "",
+  lpass = ""
+)
 }
 \value{
 \code{list}
@@ -14,6 +74,5 @@ Allows to generate a template of list of keys and values of user POST request fo
 }
 \examples{
 # Prepare search payload for 6175 KFME field
-pld <- set_search_payload()
-pld$rfKvadrat <- 6175
+pld <- set_search_payload(rfKvadrat = 6175, num_rec_only = T)
 }
