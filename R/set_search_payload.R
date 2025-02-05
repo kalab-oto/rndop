@@ -138,5 +138,9 @@ set_search_payload <- function(
         cat(paste(ndop_list("group")[list_lines, 2], collapse = ", " ), "\n")
     }
 
+    if (hasArg(parametryZakresu) && !is.null(parametryZakresu)) {
+        search_payload$parametryZakresu <- sf_to_ndop_json(parametryZakresu)
+    }
+
     return(search_payload)
 }
