@@ -57,5 +57,5 @@ pld_num <- set_search_payload(rfKvadrat = 6175, rfTaxon = "mantis religiosa")
 pld_1 <- ndop_download(search_payload = pld_num, num_rec_only = T)
 
 test_that("query multiple species while one of them have 0 records", {
-    expect_equal(dim(pld_0),pld_1)
+    expect_equal(dim(pld_0)[1],pld_1)
 })
