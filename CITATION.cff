@@ -5,7 +5,7 @@ authors:
   given-names: Oto
   affiliation: Department of Physical Geography and Geoecology, Faculty of Science, University of Ostrava,
   orcid: 0000-0003-3485-9377
-title: "rndop: Interface for The Species Occurrence Database of NCA CR (Czechia)"
+title: "rndop: Access to the Data from The Species Occurrence Database of NCA CR (Czechia) in R"
 version: 0.2.1
 date-released: 2024-04-23
 url: "https://github.com/kalab-oto/rndop"
