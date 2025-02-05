@@ -160,7 +160,7 @@ ndop_download <- function(species, family, group, locations = 0, search_payload,
     table_df <- do.call(rbind, table_df_list)
     if (locations == 2) {
         sf_list <- get_locations(filter_session)
-        sf_df <- list(sf_list,table_df)
+        sf_df <- list(table_df, sf_list)
         return(sf_df)
     }
     return(table_df)
