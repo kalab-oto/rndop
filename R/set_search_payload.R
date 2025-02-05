@@ -70,7 +70,7 @@ set_search_payload <- function(
 
     search_payload <- c(as.list(environment()))
 
-    if (hasArg(rfTaxon)) {
+    if (hasArg(rfTaxon) && !is.null(rfTaxon)) {
         list_vals  <- grep(paste(rfTaxon, collapse = "|"),
                                  ndop_list("species"),
                           ignore.case=TRUE,
@@ -93,7 +93,7 @@ set_search_payload <- function(
   
     }
 
-    if (hasArg(rfCeledi)) {
+    if (hasArg(rfCeledi) && !is.null(rfCeledi)) {
         list_lines <- grep(paste(rfCeledi, collapse = "|"),
                                  ndop_list("family")[,2],
                           ignore.case=TRUE)
@@ -116,7 +116,7 @@ set_search_payload <- function(
         cat(paste0(ndop_list("family")[list_lines, 2], collapse = ", "), "\n")
     }
 
-    if (hasArg(rfKategorie)) {
+    if (hasArg(rfKategorie) && !is.null(rfKategorie)) {
         list_lines <- grep(paste(rfKategorie,collapse = "|"),
                                  ndop_list("group")[,2],
                           ignore.case=TRUE)

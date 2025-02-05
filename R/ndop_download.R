@@ -42,7 +42,7 @@
 #' locs <- ndop_download("mantis religiosa", locations = 1)
 #' plot(locs[[1]]$geometry)
 
-ndop_download <- function(species, family, group, locations = 0, search_payload, num_rec_only) {
+ndop_download <- function(species = NULL, family = NULL, group = NULL, locations = 0, search_payload = NULL, num_rec_only = FALSE) {
     
     if (!hasArg(search_payload)) {
         search_payload <- set_search_payload(rfTaxon = species,
