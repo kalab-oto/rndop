@@ -48,6 +48,8 @@ ndop_download <- function(species, family, group, locations = 0, search_payload,
         search_payload <- set_search_payload(rfTaxon = species,
                                              rfCeledi = family,
                                              rfKategorie = group)
+    } else {
+        cat("Using user payload\n")
     }
 
     pagesize <- search_payload$pagesizeX
@@ -59,6 +61,10 @@ ndop_download <- function(species, family, group, locations = 0, search_payload,
     num_rec <- filter_session$records
 
     if (hasArg(num_rec_only)) {
+        return(num_rec)
+    }
+
+    if (is.na(num_rec)) {
         return(num_rec)
     }
 

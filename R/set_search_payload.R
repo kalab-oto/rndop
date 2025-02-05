@@ -75,42 +75,67 @@ set_search_payload <- function(rfTaxon, rfCeledi, rfKategorie) {
                                  ndop_list("species"),
                           ignore.case=TRUE,
                           value=TRUE)
+        
+        if (length(rfTaxon) > length(list_vals)) {
+            cat(paste("species not found in NDOP database:\n",
+                        paste(rfTaxon[!(rfTaxon %in% list_vals)], collapse = ", "),
+                        "\ncheck `?ndop_list('species')`\n"
+                        )
+            )
+        }
+        
         search_payload$rfTaxon <- list_vals
         rfTaxon_num <- length(search_payload$rfTaxon)
-        if (rfTaxon_num > 1) {
-            search_payload$rfTaxon <- paste(list_vals,
-                                            collapse = " || ")
-            cat(paste("Processing",rfTaxon_num,"species:\n"))
-            cat(paste0(list_vals,","))
-        }       
+
+        search_payload$rfTaxon <- paste(list_vals, collapse = " || ")
+        cat(paste("Found",rfTaxon_num,"species:\n"))
+        cat(paste0(list_vals, collapse = ", "), "\n")
+  
     }
 
     if (hasArg(rfCeledi)) {
         list_lines <- grep(paste(rfCeledi, collapse = "|"),
                                  ndop_list("family")[,2],
                           ignore.case=TRUE)
-        search_payload$rfCeledi <- ndop_list("family")[list_lines,1]
-        rfCeledi_num <- length(search_payload$rfCeledi)
-        if (rfCeledi_num > 1) {
-            search_payload$rfCeledi <- paste(search_payload$rfCeledi,
-                                            collapse = " || ")
-            cat(paste("Processing",rfCeledi_num,"families:\n"))
-            cat(paste0(ndop_list("family")[list_lines,2],","))
+
+        if (length(rfCeledi) > length(list_lines)) {
+            cat(paste("families not found in NDOP database:\n",
+                      paste(rfCeledi[!(rfCeledi %in% ndop_list("family")[list_lines, 2])], collapse = ", "),
+                      "\ncheck `?ndop_list('family')`\n"
+                      )
+            )
         }
+        
+        search_payload$rfCeledi <- ndop_list("family")[list_lines,1]
+
+        rfCeledi_num <- length(search_payload$rfCeledi)
+
+        search_payload$rfCeledi <- paste(search_payload$rfCeledi,
+                                        collapse = " || ")
+        cat(paste("Found",rfCeledi_num,"families:\n"))
+        cat(paste0(ndop_list("family")[list_lines, 2], collapse = ", "), "\n")
     }
 
     if (hasArg(rfKategorie)) {
         list_lines <- grep(paste(rfKategorie,collapse = "|"),
                                  ndop_list("group")[,2],
                           ignore.case=TRUE)
-        search_payload$rfKategorie <- ndop_list("group")[list_lines,1]
-        rfKategorie <- length(search_payload$rfKategorie)
-        if (rfKategorie > 1) {
-            search_payload$rfKategorie <- paste(search_payload$rfKategorie,
-                                            collapse = ",")
-            cat(paste("Processing",rfKategorie,"families:\n"))
-            cat(paste0(ndop_list("group")[list_lines,2],","))
+
+        if (length(rfKategorie) > length(list_lines)) {
+            cat(paste("groups not found in NDOP database:\n",
+                      paste(rfKategorie[!(rfKategorie %in% ndop_list("group")[list_lines, 2])], collapse = ", "),
+                      "\ncheck `?ndop_list('group')`\n"
+                      )
+            )
         }
+
+        search_payload$rfKategorie <- ndop_list("group")[list_lines,1]
+        
+        rfKategorie_num <- length(search_payload$rfKategorie)
+        search_payload$rfKategorie <- paste(search_payload$rfKategorie,
+                                        collapse = ",")
+        cat(paste("Found", rfKategorie_num, "groups:\n"))
+        cat(paste(ndop_list("group")[list_lines, 2], collapse = ", " ), "\n")
     }
 
     return(search_payload)
