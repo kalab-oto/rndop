@@ -11,7 +11,7 @@ requires free [registration](https://idm.nature.cz/idm/#/registration).
 Data itself are published under CC BY-SA 4.0 licence and should be referenced 
 according to 
 [AOPK citation
- rules](https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910).
+ rules](https://portal23.nature.cz/publik_syst/ctihtmlpage.php?what=4910).
 
 ## Installation
 
