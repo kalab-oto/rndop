@@ -11,6 +11,7 @@
 #' layers, and contains only geometries and lcalization id. Options: 1 - 
 #' download only localization (without table data); 2 - download localization 
 #' and table data; NULL - do not download localization (default)
+#' @param polygon input sf object with polygon geometry. It takes first polygon from the sf object. Area of the polygon can't be larger than 100 km². The polygon will be automatically transformed to S-JTSK (EPSG:5514) projection.
 #' @param search_payload allows to enter a list of keys and values of POST request directly. Use \code{\link{set_search_payload}} function for genarating payload list
 #' @param num_rec_only if TRUE, returns only number of records found
 #' @section Coordinates:

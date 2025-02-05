@@ -5,12 +5,13 @@
 \title{Download occurrence data from NDOP}
 \usage{
 ndop_download(
-  species,
-  family,
-  group,
+  species = NULL,
+  family = NULL,
+  group = NULL,
+  polygon = NULL,
   locations = 0,
-  search_payload,
-  num_rec_only
+  search_payload = NULL,
+  num_rec_only = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ ndop_download(
 \item{family}{search by family name. Input is string or vector of strings}
 
 \item{group}{search by predefined higher taxon categories. Input is string or vector of strings}
+
+\item{polygon}{input sf object with polygon geometry. It takes first polygon from the sf object. Area of the polygon can't be larger than 100 km². The polygon will be automatically transformed to S-JTSK (EPSG:5514) projection.}
 
 \item{locations}{enables download raw localizations provided by NDOP in
 ESRI shapefiles. The localizations are provided as points, lines and polygons
