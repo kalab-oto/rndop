@@ -25,6 +25,7 @@ get_locations <- function(filter_session_info) {
             locat_temp_dir <- tempfile()
             unzip(locat_temp_zip, exdir = locat_temp_dir)
             sf_list[[i]] <- sf::st_read(locat_temp_dir)
+            sf_list <- lapply(sf_list, function(x) sf::st_set_crs(x, 5514))
         }
     return(sf_list)
     }
