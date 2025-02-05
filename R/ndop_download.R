@@ -58,7 +58,7 @@ ndop_download <- function(species, family, group, locations = 0, search_payload,
     isop_loginhash <- filter_session$isop_loginhash
     num_rec <- filter_session$records
 
-    if (num_rec_only) {
+    if (hasArg(num_rec_only)) {
         return(num_rec)
     }
 
