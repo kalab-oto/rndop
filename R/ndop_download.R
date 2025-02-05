@@ -3,9 +3,9 @@
 #' Download data from NDOP. Default data source is table data containing all
 #'  available informations about records. Optionally is also possible to 
 #' download raw localizations.
-#' @param species search by species or genus name
-#' @param family search by family name
-#' @param group search by predefined higher taxon categories
+#' @param species search by species or genus name. Input is string or vector of strings
+#' @param family search by family name. Input is string or vector of strings
+#' @param group search by predefined higher taxon categories. Input is string or vector of strings
 #' @param locations enables download raw localizations provided by NDOP in 
 #' ESRI shapefiles. The localizations are provided as points, lines and polygons
 #' layers, and contains only geometries and lcalization id. Options: 1 - 

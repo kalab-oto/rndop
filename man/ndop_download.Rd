@@ -14,11 +14,11 @@ ndop_download(
 )
 }
 \arguments{
-\item{species}{search by species or genus name}
+\item{species}{search by species or genus name. Input is string or vector of strings}
 
-\item{family}{search by family name}
+\item{family}{search by family name. Input is string or vector of strings}
 
-\item{group}{search by predefined higher taxon categories}
+\item{group}{search by predefined higher taxon categories. Input is string or vector of strings}
 
 \item{locations}{enables download raw localizations provided by NDOP in
 ESRI shapefiles. The localizations are provided as points, lines and polygons
