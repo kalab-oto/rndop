@@ -15,23 +15,30 @@ according to
 
 ## Installation
 
+**Development version:**
+
 ```r
-install.packages("remotes")
+# install.packages("remotes")
 remotes::install_github("kalab-oto/rndop")
 ```
+
+**Specific version**
+
+Use `install_github` `ref` argument with desired version number or commit (see `?install_github`):
+
+```r
+remotes::install_github("kalab-oto/rndop", ref = "v0.2.0")
+```
+
+> [!WARNING]  
+> This package is under development, and older versions may not work preperly.
 
 ## Usage
 
 ```r
 library(rndop)
+
 mr <- ndop_download("mantis religiosa")
 head(mr)
 ```
 
-## Warning
-
-This package is under development, if you need to stick to a specific version, use `install_github` `ref` argument with desired version number or commit (see `?install_github`):
-
-```r
-remotes::install_github("kalab-oto/rndop",ref ="v0.1.0")
-```
