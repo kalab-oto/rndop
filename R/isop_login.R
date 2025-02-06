@@ -72,7 +72,7 @@ isop_login <- function(username = NULL,
             isop_login = "+Přihlásit+se+"
         )
 
-    l <- httr::POST(LOGIN_URL, body = login_payload)
+    l <- httr::POST(LOGIN_URL, body = login_payload, user_agent(USER_AGENT))
     assign('isop_loginhash',l$cookies$value[2], envir = .GlobalEnv)
     if (is.na(isop_loginhash)) {
         renv_cleanup()

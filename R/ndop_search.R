@@ -9,7 +9,8 @@ ndop_search <- function(search_payload){
         filter_page <- httr::POST(SEARCH_URL,
                            body = search_payload,
                            config = httr::set_cookies(
-                                            isop_loginhash = isop_loginhash))
+                                            isop_loginhash = isop_loginhash),
+                           user_agent(USER_AGENT))
     }
     
     Sys.sleep(3)
