@@ -19,4 +19,4 @@ poly_120 <- sf::st_as_sfc(
         )
 
 sysdata_filenames <- load("R/sysdata.rda")
-save(list = c(sysdata_filenames, "USER_AGENT"), file = "R/sysdata.rda")
+save(list = c(sysdata_filenames, c("USER_AGENT", "poly_1", "poly_120")), file = "R/sysdata.rda")
