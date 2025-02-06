@@ -63,6 +63,6 @@ area_list <- as.data.frame(area_list)
 names(area_list) <- c("payload_val","type","name")
 # Save data
 
-usethis::use_data(species_list,family_list,group_list,area_list
+usethis::use_data(species_list,family_list,group_list,area_list,
                   internal = TRUE,
                   overwrite = T)
