@@ -79,7 +79,7 @@ set_search_payload <- function(
         if (length(rfTaxon) > length(list_vals)) {
             cat(paste("species not found in NDOP database:\n",
                         paste(rfTaxon[!(rfTaxon %in% list_vals)], collapse = ", "),
-                        "\ncheck `?ndop_list('species')`\n"
+                       "\ncheck `?ndop_list`\n"
                         )
             )
         }
@@ -101,7 +101,7 @@ set_search_payload <- function(
         if (length(rfCeledi) > length(list_lines)) {
             cat(paste("families not found in NDOP database:\n",
                       paste(rfCeledi[!(rfCeledi %in% ndop_list("family")[list_lines, 2])], collapse = ", "),
-                      "\ncheck `?ndop_list('family')`\n"
+                      "\ncheck `?ndop_list`\n"
                       )
             )
         }
@@ -124,7 +124,7 @@ set_search_payload <- function(
         if (length(rfKategorie) > length(list_lines)) {
             cat(paste("groups not found in NDOP database:\n",
                       paste(rfKategorie[!(rfKategorie %in% ndop_list("group")[list_lines, 2])], collapse = ", "),
-                      "\ncheck `?ndop_list('group')`\n"
+                      "\ncheck `?ndop_list`\n"
                       )
             )
         }
