@@ -1,6 +1,6 @@
 # Group
 
-r <- httr::GET("https://portal23.nature.cz/redlist/v_nd_taxon_category.php?", user_agent(USER_AGENT))
+r <- httr::GET("https://portal23.nature.cz/redlist/v_nd_taxon_category.php?", httr::user_agent(USER_AGENT))
 
 html_parse <-  gsub(paste0('^.*<select name="skupina" style=',
                            '"width: 360px; padding: 2px;">\\s*|\\s*<td>.*$'),
@@ -37,7 +37,7 @@ family_cat <- list()
 for (i in seq(nrow(group_list))) {
     r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/",
                            "modals/modals.php?opener=rfCeledi&promka=&",
-                           "id_kategorie=",group_list$payload_val[i]), user_agent(USER_AGENT))
+                           "id_kategorie=",group_list$payload_val[i]), httr::user_agent(USER_AGENT))
     family_cat[[i]] <- jsonlite::fromJSON(httr::content(r,"text"))$items
 }
 
@@ -48,7 +48,7 @@ family_list <- family_list[1:2]
 # Species
 
 r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/modals/",
-                      "modals.php?opener=rfTaxon&promka=&id_kategorie="), user_agent(USER_AGENT))
+                      "modals.php?opener=rfTaxon&promka=&id_kategorie="), httr::user_agent(USER_AGENT))
 
 species_list <- jsonlite::fromJSON(httr::content(r,"text"))$items
 species_list <- unique(species_list[,1])
@@ -56,7 +56,7 @@ species_list <- unique(species_list[,1])
 # Area
 
 r <- httr::GET(paste0("https://portal23.nature.cz/inc/components/modals/",
-                      "modals.php?opener=multiple&promka=&id_kategorie="), user_agent(USER_AGENT))
+                      "modals.php?opener=multiple&promka=&id_kategorie="), httr::user_agent(USER_AGENT))
 
 area_list <- jsonlite::fromJSON(httr::content(r,"text"))$items
 area_list <- as.data.frame(area_list)

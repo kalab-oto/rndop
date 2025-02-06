@@ -152,7 +152,7 @@ ndop_download <- function(species = NULL, family = NULL, group = NULL, polygon =
                            body = table_payload,
                            config = httr::set_cookies(
                                             isop_loginhash = isop_loginhash),
-                           user_agent(USER_AGENT))
+                           httr::user_agent(USER_AGENT))
         table_resp <- httr::content(table_post,
                                     type = "text",
                                     encoding = 'cp1250')

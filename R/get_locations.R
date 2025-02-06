@@ -5,7 +5,7 @@ get_locations <- function(filter_session_info) {
 
     locat <- httr::GET(LOCATIONS_URL,
                       config = httr::set_cookies(PHPSESSID = filter_PHPSESSID),
-                      user_agent(USER_AGENT)
+                      httr::user_agent(USER_AGENT)
                       )
     if (httr::content(locat,"text") == "\n\n\n\n\n\n") {
        cat("No locations available")

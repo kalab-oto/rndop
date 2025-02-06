@@ -10,7 +10,7 @@ ndop_search <- function(search_payload){
                            body = search_payload,
                            config = httr::set_cookies(
                                             isop_loginhash = isop_loginhash),
-                           user_agent(USER_AGENT))
+                           httr::user_agent(USER_AGENT))
     }
     
     Sys.sleep(3)
