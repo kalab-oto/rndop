@@ -60,6 +60,6 @@ test_that("query multiple species while one of them have 0 records", {
     expect_equal(dim(pld_0)[1],pld_1)
 })
 
-test_that("query multiple species while one of them have 0 records", {
+test_that("query with sf object works", {
     expect_gt(ndop_download(polygon = poly_1, num_rec_only = T),1)
 })
