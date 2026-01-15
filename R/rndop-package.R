@@ -6,7 +6,7 @@
 #' <https://portal.nature.cz/nd/>). Database includes occurrence records both 
 #' from professionals (monitorings, inventarisations) and citizen scientists. 
 #' Use of the database is free and requires free registration 
-#' (<https://idm.nature.cz/idm/#/egistration>). Data itself are published 
+#' (<https://idm.nature.cz/idm/#/registration>). Data itself are published 
 #' under CC BY-SA 4.0 licence and should be referenced according to AOPK 
 #' citation rules 
 #' (<https://portal23.nature.cz/publik_syst/ctihtmlpage.php?what=4910>).
