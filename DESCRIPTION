@@ -1,6 +1,6 @@
 Package: rndop
 Title: Access to the Data from The Species Occurrence Database of NCA CR (Czechia) in R
-Version: 0.2.2
+Version: 0.2.2.9000
 Authors@R: 
     person("Oto", "Kaláb", , "kalab.oto@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3485-9377"))
