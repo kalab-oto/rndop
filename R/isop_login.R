@@ -38,6 +38,8 @@
 #' # using new credentials
 #' isop_login(reset = T)
 
+RENV_PATH <- file.path(Sys.getenv("HOME"), ".Renviron")
+
 isop_login <- function(username = NULL,
                        password = NULL,
                        store = TRUE,
@@ -51,7 +53,7 @@ isop_login <- function(username = NULL,
         password <- Sys.getenv("NDOP_PWD")
     }
 
-    if (missing(username) || reset) {
+    if (is.null(username) || reset) {
         cat(paste0("You are not logged in. Enter username and password.",
                    " For more details see `?isop_login`\n"))
         username <- readline(prompt = "Username: ")
@@ -61,9 +63,9 @@ isop_login <- function(username = NULL,
             renv_cleanup()
 
             ndop_user <- paste0("NDOP_USER='", username, "'")
-            write(ndop_user, file = "~/.Renviron", append = TRUE)
+            write(ndop_user, file = RENV_PATH, append = TRUE)
             ndop_pwd <- paste0("NDOP_PWD='", password,"'")
-            write(ndop_pwd, file = "~/.Renviron", append = TRUE)
+            write(ndop_pwd, file = RENV_PATH, append = TRUE)
         }
     }
     login_payload <- list(
@@ -81,6 +83,9 @@ isop_login <- function(username = NULL,
 }
 
 renv_cleanup <- function(){
-    renv_lines <- readLines("~/.Renviron")[!startsWith(readLines("~/.Renviron"),"NDOP_")]
-    write(renv_lines, file = "~/.Renviron")
+    if (file.exists(RENV_PATH)) {
+        all_lines <- readLines(RENV_PATH)
+        renv_lines <- all_lines[!startsWith(all_lines, "NDOP_")]
+        writeLines(renv_lines, con = RENV_PATH)
+    }
 }
