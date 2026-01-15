@@ -24,10 +24,11 @@ remotes::install_github("kalab-oto/rndop")
 
 **Specific version**
 
-Use `install_github` `ref` argument with desired version number or commit (see `?install_github`):
+If you need stick with specific version, use `install_github` `ref` argument with specific version number or commit
+(see `?install_github`):
 
 ```r
-remotes::install_github("kalab-oto/rndop", ref = "v0.2.0")
+remotes::install_github("kalab-oto/rndop", ref = "v0.2.2")
 ```
 
 > [!WARNING]  
