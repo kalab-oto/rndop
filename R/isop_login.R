@@ -38,8 +38,6 @@
 #' # using new credentials
 #' isop_login(reset = T)
 
-RENV_PATH <- file.path(Sys.getenv("HOME"), ".Renviron")
-
 isop_login <- function(username = NULL,
                        password = NULL,
                        store = TRUE,
@@ -62,10 +60,11 @@ isop_login <- function(username = NULL,
         if (store) {
             renv_cleanup()
 
+            renv_path <- file.path(Sys.getenv("HOME"), ".Renviron")
             ndop_user <- paste0("NDOP_USER='", username, "'")
-            write(ndop_user, file = RENV_PATH, append = TRUE)
+            write(ndop_user, file = renv_path, append = TRUE)
             ndop_pwd <- paste0("NDOP_PWD='", password,"'")
-            write(ndop_pwd, file = RENV_PATH, append = TRUE)
+            write(ndop_pwd, file = renv_path, append = TRUE)
         }
     }
     login_payload <- list(
@@ -83,9 +82,10 @@ isop_login <- function(username = NULL,
 }
 
 renv_cleanup <- function(){
-    if (file.exists(RENV_PATH)) {
-        all_lines <- readLines(RENV_PATH)
+    renv_path <- file.path(Sys.getenv("HOME"), ".Renviron")
+    if (file.exists(renv_path)) {
+        all_lines <- readLines(renv_path)
         renv_lines <- all_lines[!startsWith(all_lines, "NDOP_")]
-        writeLines(renv_lines, con = RENV_PATH)
+        writeLines(renv_lines, con = renv_path)
     }
 }
